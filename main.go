@@ -26,12 +26,12 @@ func main() {
 	// defer rows.Close()
 	for rows.Next() {
 		user := User{}
-		err := rows.Scan(&user.Id, &user.Name)
+		err := rows.Scan(&user.ID, &user.Name)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		log.Println(user.Id, user.Name)
+		log.Println(user.ID, user.Name)
 		users = append(users, user)
 	}
 	rows.Close()
@@ -43,7 +43,8 @@ func main() {
 	defer db.Close()
 }
 
+// User 用户
 type User struct {
-	Id   int
+	ID   int
 	Name string
 }
